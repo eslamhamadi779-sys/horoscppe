@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اعرف برجك من تاريخ الميلاد | صفات الأبراج والتوافق</title>
+    <meta name="description" content="اكتب تاريخ ميلادك واعرف برجك الحقيقي مع الصفات والمميزات والعيوب والتوافق مع باقي الأبراج مجانًا.">
+    <meta name="keywords" content="اعرف برجك, الأبراج, تاريخ الميلاد, صفات الأبراج, توافق الأبراج, برجك اليوم">
+    <meta name="author" content="إسلام الهاشمي">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="v48WjjwDZ_jQTxIW1C2WGI2PWID3xgd-fnSuQFsX0qI" />
+    <link rel="icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- خلفية الكون المتحركة -->
+<div class="cosmic-bg">
+    <div class="stars-layer" id="starsLayer"></div>
+    <div class="zodiac-wheel-container">
+        <div class="zodiac-wheel" id="zodiacWheel">
+            <div class="wheel-inner">
+                <div class="wheel-symbol" style="--i:0">♈</div>
+                <div class="wheel-symbol" style="--i:1">♉</div>
+                <div class="wheel-symbol" style="--i:2">♊</div>
+                <div class="wheel-symbol" style="--i:3">♋</div>
+                <div class="wheel-symbol" style="--i:4">♌</div>
+                <div class="wheel-symbol" style="--i:5">♍</div>
+                <div class="wheel-symbol" style="--i:6">♎</div>
+                <div class="wheel-symbol" style="--i:7">♏</div>
+                <div class="wheel-symbol" style="--i:8">♐</div>
+                <div class="wheel-symbol" style="--i:9">♑</div>
+                <div class="wheel-symbol" style="--i:10">♒</div>
+                <div class="wheel-symbol" style="--i:11">♓</div>
+            </div>
+            <div class="wheel-rings">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+            </div>
+        </div>
+    </div>
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
+</div>
+
+<!-- الهيدر -->
+<header>
+    <div class="header-content">
+        <div class="header-icon">✨</div>
+        <h1>اعرف برجك</h1>
+        <p>رحلة في عالم النجوم والأبراج — اكتشف شخصيتك وتوافقاتك</p>
+    </div>
+</header>
+
+<!-- القائمة -->
+<nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#history">تاريخ الأبراج</a>
+    <a href="#compatibility">التوافقات</a>
+    <a href="#all-signs">كل الأبراج</a>
+    <a href="#contact">اتصل بنا</a>
+</nav>
+
+<main>
+
+    <!-- قسم الاكتشاف -->
+    <section id="home" class="hero-section">
+        <h2>✨ اكتشف برجك</h2>
+        <p class="section-desc">أدخل تاريخ ميلادك وسنكشف لك أسرار شخصيتك</p>
+        <div class="form-group">
+            <label>📅 اختر تاريخ الميلاد:</label>
+            <input type="date" id="birthDate">
+            <button type="button" onclick="checkZodiac()">
+                <span>🔮 اعرف برجك الآن</span>
+            </button>
+        </div>
+        <div id="result" class="result-box hidden">سيظهر برجك هنا</div>
+    </section>
+
+    <!-- قسم التوافقات بين برجين -->
+    <section id="compatibility" class="compat-section">
+        <h2>💫 توافق بين برجين</h2>
+        <p class="section-desc">اختر برجين وشوف مدى التوافق بينهم</p>
+        <div class="compat-selectors">
+            <div class="compat-side">
+                <label>البرج الأول</label>
+                <select id="sign1" onchange="updateCompatibility()">
+                    <option value="">اختر برجك</option>
+                </select>
+            </div>
+            <div class="compat-vs">
+                <span>💞</span>
+            </div>
+            <div class="compat-side">
+                <label>البرج الثاني</label>
+                <select id="sign2" onchange="updateCompatibility()">
+                    <option value="">اختر البرج الآخر</option>
+                </select>
+            </div>
+        </div>
+        <div id="compatResult" class="compat-result hidden"></div>
+    </section>
+
+    <!-- قسم كل الأبراج -->
+    <section id="all-signs">
+        <h2>🌟 استكشف كل الأبراج</h2>
+        <p class="section-desc">اضغط على أي برج لتعرف كل تفاصيله</p>
+        <div class="signs-grid" id="signsGrid"></div>
+    </section>
+
+    <!-- قسم تاريخ الأبراج -->
+    <section id="history">
+        <h2>📜 تاريخ الأبراج</h2>
+        <div class="history-content">
+            <div class="history-card">
+                <div class="history-icon">🏛️</div>
+                <h3>الأصول البابلية</h3>
+                <p>نشأت الأبراج منذ أكثر من 3000 سنة في بابل القديمة، حيث رصد الكهنة حركة النجوم وربطوها بالأحداث الأرضية وشخصيات البشر.</p>
+            </div>
+            <div class="history-card">
+                <div class="history-icon">🇬🇷</div>
+                <h3>التطور اليوناني</h3>
+                <p>طور اليونانيون علم التنجيم وأعطوا الأبراج أسماءها الحالية، وربطوها بالأساطير والآلهة مما أضاف بُعدًا فلسفيًا وروحيًا.</p>
+            </div>
+            <div class="history-card">
+                <div class="history-icon">⭐</div>
+                <h3>التراث العربي</h3>
+                <p>حافظ علماء العرب على هذا العلم ونقلوه وطوروه خلال العصر الذهبي الإسلامي، وكان التنجيم جزءًا أصيلًا من الفلك العربي.</p>
+            </div>
+            <div class="history-card">
+                <div class="history-icon">🌍</div>
+                <h3>انتشاره العالمي</h3>
+                <p>انتشرت الأبراج عبر العالم وأصبحت ثقافة عالمية تُقرأ في كل لغة، تجمع الناس في تساؤلاتهم عن الذات والعلاقات والمستقبل.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم من نحن -->
+    <section id="about">
+        <h2>🌙 من نحن</h2>
+        <p>إسلام الهاشمي، كاتب قصص ومبرمج، أنشر المحبة بين الجميع وتقبل المختلف. هذا الموقع صُنع بحب لكل من يريد أن يفهم نفسه أكثر.</p>
+    </section>
+
+    <!-- قسم التواصل -->
+    <section id="contact">
+        <h2>📱 للشكاوي والمقترحات</h2>
+        <p>رأيك يهمنا! تواصل معنا عبر واتساب</p>
+        <br>
+        <a href="https://wa.me/201005727778" target="_blank">
+            <button class="whatsapp-btn">💬 تواصل على واتساب</button>
+        </a>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-symbols">♈ ♉ ♊ ♋ ♌ ♍ ♎ ♏ ♐ ♑ ♒ ♓</div>
+    <p>إسلام الهاشمي © جميع الحقوق محفوظة 2025</p>
+</footer>
+
+<!-- Modal تفاصيل البرج -->
+<div id="signModal" class="modal hidden">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
